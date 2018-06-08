@@ -13,6 +13,7 @@ import plotly.plotly as py
 from plotly.graph_objs import *
 
 app = Dash(__name__)
+server = app.server
 
 # do all the machine learning
 iris = datasets.load_iris()
