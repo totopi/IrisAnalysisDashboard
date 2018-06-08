@@ -19,7 +19,7 @@ iris = datasets.load_iris()
 colors = ["#E41A1C", "#377EB8", "#4DAF4A", \
           "#984EA3", "#FF7F00", "#FFFF33", \
           "#A65628", "#F781BF", "#999999"]
-number_of_clusters = range(7)
+number_of_clusters = range(5)
 
 
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
@@ -46,7 +46,6 @@ for n in number_of_clusters:
     })
 
 dropdown_val = iris.feature_names
-dropdown_numbers = range(7)
 
 app.layout = html.Div(className="container", children=[
                 html.Div(className="jumbotron text-center", children=[
@@ -67,9 +66,9 @@ app.layout = html.Div(className="container", children=[
                 ),
                 dcc.Dropdown(className="col-md-4", id="dropdown_k",
                     options=[
-                        {'label': str(val+1), 'value': val} for val in dropdown_numbers
+                        {'label': str(val+1), 'value': val} for val in number_of_clusters
                     ],
-                    value=dropdown_numbers[3]
+                    value=number_of_clusters[3]
                 ),
                 html.Div(style={"padding": "20px"}, children=[
                     dcc.Graph(id="cluster")
