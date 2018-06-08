@@ -14,13 +14,14 @@ from plotly.graph_objs import *
 
 app = Dash(__name__)
 server = app.server
+app.title='Iris Data Dashboard'
 
 # do all the machine learning
 iris = datasets.load_iris()
 colors = ["#E41A1C", "#377EB8", "#4DAF4A", \
           "#984EA3", "#FF7F00", "#FFFF33", \
           "#A65628", "#F781BF", "#999999"]
-number_of_clusters = range(10)
+number_of_clusters = range(9)
 
 
 df = pd.DataFrame(iris.data, columns=iris.feature_names)
@@ -51,7 +52,8 @@ dropdown_val = iris.feature_names
 app.layout = html.Div(className="container", children=[
                 html.Div(className="jumbotron text-center", children=[
                     html.H1("Iris Analysis"),
-                    html.P("Select the X and Y to visualize the data using chosen number of clusters")
+                    html.P("Select the X and Y to visualize the data using chosen number of clusters"),
+                    html.P("A simple classification algorithm using K Nearest Neighbors")
                     ]),
                 dcc.Dropdown(className="col-md-4", id="dropdown_x",
                     options=[
